@@ -27,7 +27,7 @@
 			<label>여자<input type="radio" name="userGender"></label>
 		</div>
 		<div>
-			<input type="text" name="userEmail" placeholder="이메일" maxlength="50">
+			<input type="email" name="userEmail" placeholder="이메일" maxlength="50">
 		</div>
 		<div>
 			<input type="submit" value="회원가입" title="회원가입">
