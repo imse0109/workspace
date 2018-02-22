@@ -9,6 +9,8 @@
 <body>
 	<script>
 	location.href= "login.jsp";
+	
+	testtest
 	</script>
 </body>
 </html>
