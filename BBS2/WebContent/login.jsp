@@ -5,11 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
 	<header>
 		<h1>loginPage</h1>
-		<a href="login.jsp">로그인</a>
+		<a href="login.jsp" class="on">로그인</a>
 		<a href="join.jsp">회원가입</a>
 	</header>
 	<form action="loginAction.jsp" method="post">
