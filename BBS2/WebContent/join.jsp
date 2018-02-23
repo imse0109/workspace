@@ -5,12 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
 	<header>
 		<h1>joinPage</h1>
 		<a href="login.jsp">로그인</a>
-		<a href="join.jsp">회원가입</a>
+		<a href="join.jsp" class="on">회원가입</a>
 	</header>
 	<form action="joinAction.jsp" method="post">
 		<div>
@@ -23,8 +24,8 @@
 			<input type="text" name="userName" placeholder="이름" maxlength="20">
 		</div>
 		<div>
-			<label>남자<input type="radio" name="userGender"></label>
-			<label>여자<input type="radio" name="userGender"></label>
+			<label>남자<input type="radio" name="userGender" value="남자"></label>
+			<label>여자<input type="radio" name="userGender" value="여자"></label>
 		</div>
 		<div>
 			<input type="email" name="userEmail" placeholder="이메일" maxlength="50">
