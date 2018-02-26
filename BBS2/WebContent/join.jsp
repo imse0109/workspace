@@ -15,7 +15,7 @@
 	
 	<div class="container">
 		<div class="form_wrap">
-			<form action="joinAction.jsp" method="post">
+			<form action="joinAction.jsp" method="post" name="loginform" onsubmit="return validateForm();">
 				<div>
 					<input type="text" name="userID" placeholder="아이디" maxlength="20">
 				</div>
@@ -43,5 +43,49 @@
 		</div>
 	</div>
 	
+	
+	<script>
+	function validateForm() {
+        var userid = document.loginform.userID.value;
+        var password = document.loginform.userPassword.value;
+        var username = document.loginform.userName.value;
+        var useremail = document.loginform.userEmail.value;
+        
+        var userGenderLength = document.loginform.userGender.length;
+        
+        for(var i=0;i<userGenderLength;i++){
+        	var userGender = document.loginform.userGender[i].checked;
+        }
+        
+        if (!userid) {
+        	alert ("아이디를 입력하세요");
+        	document.loginform.userID.focus();
+        	return false;
+        }
+        else if(!password){
+        	alert ("비밀번호를 입력하세요");
+        	document.loginform.userPassword.focus();
+            return false;
+        }
+        else if(!username){
+        	alert ("이름을 입력하세요");
+        	document.loginform.userName.focus();
+            return false;
+        }
+        else if(!userGender){
+        	alert ("성별을 체크하세요");
+        	document.loginform.userGender[0].focus();
+        	return false;
+        }
+        else if(!useremail){
+        	alert ("이메일을 입력하세요");
+        	document.loginform.userEmail.focus();
+            return false;
+        }
+        else{
+        	return true;
+        }
+  	}
+	</script>
 </body>
 </html>
