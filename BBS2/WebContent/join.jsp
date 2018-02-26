@@ -51,11 +51,12 @@
         var username = document.loginform.userName.value;
         var useremail = document.loginform.userEmail.value;
         
-        var userGenderLength = document.loginform.userGender.length;
+        /* var userGenderLength = document.loginform.userGender.length;
         
         for(var i=0;i<userGenderLength;i++){
         	var userGender = document.loginform.userGender[i].checked;
-        }
+        	console.log(userGender);
+        } */
         
         if (!userid) {
         	alert ("아이디를 입력하세요");
@@ -72,7 +73,7 @@
         	document.loginform.userName.focus();
             return false;
         }
-        else if(!userGender){
+        else if(document.loginform.userGender[0].checked && document.loginform.userGender[1].checked){
         	alert ("성별을 체크하세요");
         	document.loginform.userGender[0].focus();
         	return false;
