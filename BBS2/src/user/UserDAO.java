@@ -60,4 +60,23 @@ public class UserDAO {
 		return -1;		
 	}
 	
+	public User getUser(String userID) {
+		User user = null;
+		String SQL = "SELECT * FROM USER WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = new User();
+				user.setUserID(rs.getString("userID"));
+				user.setUserName(rs.getString("userName"));
+				user.setUserGender(rs.getString("userGender"));
+				user.setUserEmail(rs.getString("userEmail"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
 }
