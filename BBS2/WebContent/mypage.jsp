@@ -46,7 +46,7 @@
 				<div>
 					<input type="email" name="userEmail" placeholder="이메일" maxlength="50" value="<%=result.getUserEmail() %>">
 				</div>
-				<div>
+				<div class="ip_txt1">
 					<input type="text" name="userPhone1" maxlength="4"> - 
 					<input type="text" name="userPhone1" maxlength="4"> - 
 					<input type="text" name="userPhone1" maxlength="4">
