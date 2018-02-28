@@ -73,6 +73,7 @@ public class UserDAO {
 				user.setUserName(rs.getString("userName"));
 				user.setUserGender(rs.getString("userGender"));
 				user.setUserEmail(rs.getString("userEmail"));
+				user.setUserPhone(rs.getString("userPhone"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

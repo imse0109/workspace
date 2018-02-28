@@ -39,6 +39,7 @@
 				<div>
 					<input type="text" name="userName" placeholder="이름" maxlength="20" value="<%=result.getUserName() %>">
 				</div>
+				<%=result.getUserGender() %>
 				<div class="ip_chk1">
 					<label>남자<input type="radio" name="userGender" value="남자"></label>
 					<label>여자<input type="radio" name="userGender" value="여자"></label>
@@ -46,6 +47,7 @@
 				<div>
 					<input type="email" name="userEmail" placeholder="이메일" maxlength="50" value="<%=result.getUserEmail() %>">
 				</div>
+				<%=result.getUserPhone() %>
 				<div class="ip_txt1">
 					<input type="text" name="userPhone1" maxlength="4"> - 
 					<input type="text" name="userPhone1" maxlength="4"> - 
