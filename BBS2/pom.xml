@@ -4,16 +4,6 @@
   <artifactId>BBS2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  
-  <url>http://maven.apache.org</url>
-	<dependencies>
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-	</dependencies>
-
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -34,4 +24,13 @@
       </plugin>
     </plugins>
   </build>
+  
+  <url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+	</dependencies>
 </project>

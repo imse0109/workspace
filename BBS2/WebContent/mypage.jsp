@@ -21,12 +21,8 @@
 		
 		UserDAO userDAO = new UserDAO();
 		User result = userDAO.getUser(userID);
-		
-		String userGender1 = result.getUserGender();
-		out.println(userGender1);
-		pageContext.setAttribute("test1", userGender1);
 	%>
-	<!--<c:out value="${userGender1}" />-->
+	<c:set var="userGender" value="<%=result.getUserGender() %>" />
 	<header>
 		<h1>내 정보</h1>
 	</header>
@@ -44,8 +40,8 @@
 					<input type="text" name="userName" placeholder="이름" maxlength="20" value="<%=result.getUserName() %>">
 				</div>
 				<div class="ip_chk1">
-					<label>남자<input type="radio" name="userGender" value="남자" <%-- <c:if test="${ userGender1 == '남자'}">checked="checked"</c:if> --%> ></label>
-					<label>여자<input type="radio" name="userGender" value="여자" <%-- <c:if test="${ userGender1 == '여자'}">checked="checked"</c:if> --%> ></label>
+					<label>남자<input type="radio" name="userGender" value="남자" <c:if test="${ userGender == '남자'}">checked="checked"</c:if> ></label>
+					<label>여자<input type="radio" name="userGender" value="여자" <c:if test="${ userGender == '여자'}">checked="checked"</c:if> ></label>
 				</div>
 				<div>
 					<input type="email" name="userEmail" placeholder="이메일" maxlength="50" value="<%=result.getUserEmail() %>">
