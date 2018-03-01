@@ -42,8 +42,8 @@ public class UserDAO {
 		return -2;
 	}
 	
-	public int join(String userID, String userPassword, String userName, String userGender, String userEmail) {
-		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?)";
+	public int join(String userID, String userPassword, String userName, String userGender, String userEmail, String userPhone) {
+		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
@@ -51,6 +51,7 @@ public class UserDAO {
 			pstmt.setString(3, userName);
 			pstmt.setString(4, userGender);
 			pstmt.setString(5, userEmail);
+			pstmt.setString(6, userPhone);
 			pstmt.executeUpdate();
 			return 1;
 			

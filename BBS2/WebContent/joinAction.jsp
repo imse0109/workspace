@@ -19,7 +19,7 @@
 
 	<%
 		UserDAO userDAO = new UserDAO();
-		int result = userDAO.join(user.getUserID(), user.getUserPassword(), user.getUserName(), user.getUserGender(), user.getUserEmail());
+		int result = userDAO.join(user.getUserID(), user.getUserPassword(), user.getUserName(), user.getUserGender(), user.getUserEmail(), user.getUserPhone());
 		if(result == 1){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

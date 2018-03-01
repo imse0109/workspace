@@ -32,6 +32,9 @@
 				<div>
 					<input type="email" name="userEmail" placeholder="이메일" maxlength="50">
 				</div>
+				<div>
+					<input type="text" name="userPhone" placeholder="전화번호" maxlength="11">
+				</div>
 				<div class="ip_btn1">
 					<input type="submit" value="회원가입" title="회원가입">
 				</div>
