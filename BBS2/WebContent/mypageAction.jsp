@@ -5,8 +5,6 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userGender" />
 <jsp:setProperty name="user" property="userEmail" />
 <jsp:setProperty name="user" property="userPhone" />
@@ -20,7 +18,7 @@
 
 	<%
 		UserDAO userDAO = new UserDAO();
-		int result = userDAO.modifyUser(user.getUserID(), user.getUserPassword(), user.getUserName(), user.getUserGender(), user.getUserEmail(), user.getUserPhone());
+		int result = userDAO.modifyUser(user.getUserID(), user.getUserGender(), user.getUserEmail(), user.getUserPhone());
 		if(result == 1){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
