@@ -23,8 +23,6 @@
 		
 		UserDAO userDAO = new UserDAO();
 		User result = userDAO.getUser(userID);
-		
-		//out.println(result);
 	%>
 	<c:set var="userGender" value="<%=result.getUserGender() %>" />
 	<header>
@@ -33,13 +31,16 @@
 	
 	<div class="container">
 		<div class="form_wrap">
-			<form action="joinAction.jsp" method="post" name="loginform" onsubmit="return validateForm();">
+			<form action="mypageAction.jsp" method="post" name="loginform" onsubmit="return validateForm();">
 				<div>
 					<input type="text" name="userID" placeholder="아이디" maxlength="20" value="<%=result.getUserID() %>">
 				</div>
 				<div>
 					<input type="password" name="userPassword" placeholder="비밀번호" maxlength="20">
 				</div>
+				<!-- <div>
+					<input type="password" name="userPasswordConf" placeholder="비밀번호확인" maxlength="20">
+				</div> -->
 				<div>
 					<input type="text" name="userName" placeholder="이름" maxlength="20" value="<%=result.getUserName() %>">
 				</div>
@@ -50,13 +51,16 @@
 				<div>
 					<input type="email" name="userEmail" placeholder="이메일" maxlength="50" value="<%=result.getUserEmail() %>">
 				</div>
-				<div class="ip_txt1">
-					<input type="text" name="userPhone1" maxlength="4"> - 
-					<input type="text" name="userPhone1" maxlength="4"> - 
-					<input type="text" name="userPhone1" maxlength="4">
+				<div>
+					<input type="text" name="userPhone" placeholder="전화번호" maxlength="11">
 				</div>
 				<div class="ip_btn1">
 					<input type="submit" value="정보수정" title="정보수정">
+				</div>
+			</form>
+			<form action="deleteAction.jsp" method="post" name="deleteform">
+				<div>
+					<input type="hidden" name="userID" value="<%=result.getUserID() %>">
 				</div>
 				<div class="ip_btn1">
 					<input type="submit" value="회원탈퇴" title="회원탈퇴">
