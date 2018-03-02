@@ -9,6 +9,7 @@
 <jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userGender" />
 <jsp:setProperty name="user" property="userEmail" />
+<jsp:setProperty name="user" property="userPhone" />
 <!DOCTYPE html>
 <html>
 <head>

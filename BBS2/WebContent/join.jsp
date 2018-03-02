@@ -53,6 +53,7 @@
         var password = document.loginform.userPassword.value;
         var username = document.loginform.userName.value;
         var useremail = document.loginform.userEmail.value;
+        var userPhone = document.loginform.userPhone.value;
         
         if (!userid) {
         	alert ("아이디를 입력하세요");
@@ -77,6 +78,11 @@
         else if(!useremail){
         	alert ("이메일을 입력하세요");
         	document.loginform.userEmail.focus();
+            return false;
+        }
+        else if(!userPhone){
+        	alert ("전화번호를 입력하세요");
+        	document.loginform.userPhone.focus();
             return false;
         }
         else{
