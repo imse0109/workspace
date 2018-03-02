@@ -61,16 +61,14 @@ public class UserDAO {
 		return -1;		
 	}
 	
-	public int modifyUser(String userID, String userPassword, String userName, String userGender, String userEmail, String userPhone) {
-		String SQL = "UPDATE USER SET userPassword=?,userName=?,userGender=?,userEmail=?,userPhone=? where userID = ?";
+	public int modifyUser(String userID, String userGender, String userEmail, String userPhone) {
+		String SQL = "UPDATE USER SET userGender=?,userEmail=?,userPhone=? where userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userPassword);
-			pstmt.setString(2, userName);
-			pstmt.setString(3, userGender);
-			pstmt.setString(4, userEmail);
-			pstmt.setString(5, userPhone);
-			pstmt.setString(6, userID);
+			pstmt.setString(1, userGender);
+			pstmt.setString(2, userEmail);
+			pstmt.setString(3, userPhone);
+			pstmt.setString(4, userID);
 			pstmt.executeUpdate();
 			return 1;
 			
@@ -92,6 +90,24 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -1;		
+	}
+	
+	public User searchUserID(String userName, String userPhone) {
+		User user = null;
+		String SQL = "SELECT userID FROM USER WHERE userName = ? AND userPhone = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userPhone);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = new User();
+				user.setUserID(rs.getString("userID"));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return user;		
 	}
 	
 	public User getUser(String userID) {

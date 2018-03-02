@@ -29,8 +29,8 @@
 		</div>
 		<div class="login_rel">
 			<a href="join.jsp">회원가입</a>
-			<a href="join.jsp">아이디 찾기</a>
-			<a href="join.jsp">비밀번호 찾기</a>
+			<a href="userSearch.jsp?searchFormType=ID">아이디 찾기</a>
+			<a href="userSearch.jsp?searchFormType=Password">비밀번호 찾기</a>
 		</div>
 	</div>
 	
