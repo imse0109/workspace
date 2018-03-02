@@ -61,6 +61,39 @@ public class UserDAO {
 		return -1;		
 	}
 	
+	public int modifyUser(String userID, String userPassword, String userName, String userGender, String userEmail, String userPhone) {
+		String SQL = "UPDATE USER SET userPassword=?,userName=?,userGender=?,userEmail=?,userPhone=? where userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userPassword);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, userGender);
+			pstmt.setString(4, userEmail);
+			pstmt.setString(5, userPhone);
+			pstmt.setString(6, userID);
+			pstmt.executeUpdate();
+			return 1;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;		
+	}
+	
+	public int deleteUser(String userID) {
+		String SQL = "delete from user where userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			pstmt.executeUpdate();
+			return 1;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;		
+	}
+	
 	public User getUser(String userID) {
 		User user = null;
 		String SQL = "SELECT * FROM USER WHERE userID = ?";
