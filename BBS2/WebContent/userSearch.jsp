@@ -14,13 +14,13 @@
 	%>
 	<header>
 		<%
-			if(userSearchForm.equals("ID")){
+			if(userSearchForm.equals("Password")){
 		%>
-			<h1>아이디 찾기</h1>
+			<h1>비밀번호 찾기</h1>
 		<%
 			} else {
 		%> 
-			<h1>비밀번호 찾기</h1>
+			<h1>아이디 찾기</h1>
 		<%
 			}
 		%>			
@@ -42,7 +42,7 @@
 					<input type="text" name="userName" placeholder="이름" maxlength="20">
 				</div>
 				<div>
-					<input type="text" name="userPhone" placeholder="전화번호" maxlength="12">
+					<input type="Email" name="userEmail" placeholder="이메일" maxlength="50">
 				</div>
 				<%
 				if(userSearchForm.equals("Password")){
@@ -57,7 +57,17 @@
 					}
 				%>
 				<div class="ip_btn1">
-					<input type="submit" value="아이디찾기" title="아이디찾기">
+					<%
+						if(userSearchForm.equals("Password")){
+					%>
+						<input type="submit" value="비밀번호찾기" title="비밀번호찾기">
+					<%
+						} else {
+					%>
+						<input type="submit" value="아이디찾기" title="아이디찾기">
+					<%
+						}
+					%>
 				</div>
 			</form>
 		</div>
@@ -80,17 +90,31 @@
 	
 	<script>
 	function validateForm() {
-        var username = document.loginform.userName.value;
-        var userPhone = document.loginform.userPhone.value;
+		<%
+			if(userSearchForm.equals("Password")){
+		%>
+			var userID = document.loginform.userID.value;
+			if(!userID){
+	        	alert ("아이디를 입력하세요");
+	        	document.loginform.userID.focus();
+	            return false;
+	        }
+		<%
+				
+			}
+		%>
+        
+		var username = document.loginform.userName.value;
+        var userEmail = document.loginform.userEmail.value;
 
         if(!username){
         	alert ("이름을 입력하세요");
         	document.loginform.userName.focus();
             return false;
         }
-        else if(!userPhone){
-        	alert ("전화번호를 입력하세요");
-        	document.loginform.userPhone.focus();
+        else if(!userEmail){
+        	alert ("이메일을 입력하세요");
+        	document.loginform.userEmail.focus();
             return false;
         }
         else{

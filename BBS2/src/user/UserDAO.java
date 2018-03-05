@@ -92,13 +92,13 @@ public class UserDAO {
 		return -1;		
 	}
 	
-	public User searchUserID(String userName, String userPhone) {
+	public User searchUserID(String userName, String userEmail) {
 		User user = null;
-		String SQL = "SELECT userID FROM USER WHERE userName = ? AND userPhone = ?";
+		String SQL = "SELECT userID FROM USER WHERE userName = ? AND userEmail = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userName);
-			pstmt.setString(2, userPhone);
+			pstmt.setString(2, userEmail);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				user = new User();

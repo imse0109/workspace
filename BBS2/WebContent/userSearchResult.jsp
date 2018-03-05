@@ -7,7 +7,7 @@
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userPhone" />
+<jsp:setProperty name="user" property="userEmail" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +24,7 @@
 		}
 		
 		UserDAO userDAO = new UserDAO();
-		User result = userDAO.searchUserID(user.getUserName(), user.getUserPhone());
+		User result = userDAO.searchUserID(user.getUserName(), user.getUserEmail());
 	%>
 	<header>
 		<h1>아이디 찾기</h1>
