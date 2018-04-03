@@ -30,31 +30,30 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword)) {
-					return 1;
+					return 1; // 로그인 성공
 				}else {
-					return 0;
+					return 0; // 비밀번호 틀림
 				}
 			}
-			return -1;
+			return -1; // 아이디 없음
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -2;
+		return -2; // 데이터베이스 오류
 	}
 	
-	public int join(String userID, String userPassword, String userName, String userGender, String userEmail, String userPhone) {
-		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?)";
+	public int join(User user) {
+		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?,?,false)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userID);
-			pstmt.setString(2, userPassword);
-			pstmt.setString(3, userName);
-			pstmt.setString(4, userGender);
-			pstmt.setString(5, userEmail);
-			pstmt.setString(6, userPhone);
-			pstmt.executeUpdate();
-			return 1;
-			
+			pstmt.setString(1, user.getUserID());
+			pstmt.setString(2, user.getUserPassword());
+			pstmt.setString(3, user.getUserName());
+			pstmt.setString(4, user.getUserGender());
+			pstmt.setString(5, user.getUserEmail());
+			pstmt.setString(6, user.getUserPhone());
+			pstmt.setString(7, user.getUserEmailHash());
+			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -129,5 +128,48 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	
+	public String getUserEmail(String userID) {
+		String SQL = "SELECT userEmail FROM USER WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			} 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;		
+	}
+	
+	public boolean getUserEmailChecked(String userID) {
+		String SQL = "SELECT userEmailChecked FROM USER WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getBoolean(1);
+			} 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;		
+	}
+	
+	public boolean setUserEmailChecked(String userID) {
+		String SQL = "UPDATE USER SET userEmailChecked = true WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			pstmt.executeUpdate();
+			return true; 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;		
 	}
 }
