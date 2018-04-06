@@ -12,5 +12,27 @@
 	<header>
 		<h1>게시판</h1>
 	</header>
+	
+	<div class="container">
+		<div class="bbs">
+			<table>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>테스트입니다.</td>
+					<td>테스터</td>
+					<td>2018-04-06</td>
+				</tr>
+			</table>
+			<div class="bbs_btn">
+				<a href="bbsWrite.jsp" class="btn_write">글쓰기</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
