@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BbsDAO {
 	private Connection conn;
@@ -12,7 +14,7 @@ public class BbsDAO {
 	
 	public BbsDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/BBS2?useUnicode=true&characterEncoding=UTF-8";
+			String dbURL = "jdbc:mysql://localhost:3306/BBS2?useUnicode=true&characterEncoding=UTF-8&";
 			String dbID = "root";
 			String dbPassword = "111111";
 			Class.forName("com.mysql.jdbc.Driver");
@@ -66,6 +68,64 @@ public class BbsDAO {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public List<Bbs> getLists() {
+		List<Bbs> bbsList = new ArrayList<Bbs>();
+		String SQL = "SELECT * FROM BBS";		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			Bbs bbs = null;
+			while(rs.next()) {
+				bbs = new Bbs();
+				bbs.setBbsID(rs.getInt("bbsID"));
+				bbs.setBbsTitle(rs.getString("bbsTitle"));
+				bbs.setUserID(rs.getString("userID"));
+				bbs.setBbsDate(rs.getString("bbsDate"));
+				bbs.setBbsContent(rs.getString("bbsContent"));
+				bbs.setBbsAvailable(rs.getInt("bbsAvailable"));
+				bbsList.add(bbs);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bbsList;
+	}
+	
+	public Bbs getChoiceLists(String bbsID) {
+		Bbs bbs = null;
+		String SQL = "SELECT * FROM BBS WHERE bbsID = ?";		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, bbsID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bbs = new Bbs();
+				bbs.setBbsID(rs.getInt("bbsID"));
+				bbs.setBbsTitle(rs.getString("bbsTitle"));
+				bbs.setUserID(rs.getString("userID"));
+				bbs.setBbsDate(rs.getString("bbsDate"));
+				bbs.setBbsContent(rs.getString("bbsContent"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bbs;
+	}
+	
+	public int deleteBbs(int bbsID) {
+		String SQL = "DELETE FROM BBS WHERE bbsID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, bbsID);
+			pstmt.executeUpdate();
+			return 1;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;		
 	}
 
 }
