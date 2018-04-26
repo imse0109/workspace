@@ -42,7 +42,10 @@
 				</tr>
 			</table>
 			<div class="bbs_btn">
-				<form method="post" action="bbsWriteAction.jsp">
+				<form method="post" action="bbsWrite.jsp">
+					<input type="hidden" name="bbsID" value="<%=bbs.getBbsID() %>">
+					<input type="hidden" name="bbsTitle" value="<%=bbs.getBbsTitle() %>">
+					<input type="hidden" name="bbsContent" value="<%=bbs.getBbsContent() %>">
 					<input type="submit" class="btn_write" value="수정">
 				</form>
 				<form method="post" action="bbsDeleteAction.jsp" name="bbsdeleteform">

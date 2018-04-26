@@ -70,6 +70,25 @@ public class BbsDAO {
 		return -1;
 	}
 	
+	public int modify(String bbsTitle, int bbsID, String bbsContent) {
+		String SQL = "UPDATE BBS SET bbsTitle=?,bbsContent=? where bbsID = ?";
+		try {
+			System.out.println(bbsTitle);
+			System.out.println(bbsID);
+			System.out.println(bbsContent);
+			PreparedStatement  pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, bbsTitle);
+			pstmt.setString(2, bbsContent);
+			pstmt.setInt(3, bbsID);			
+			pstmt.executeUpdate();
+			return 1;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
 	public List<Bbs> getLists() {
 		List<Bbs> bbsList = new ArrayList<Bbs>();
 		String SQL = "SELECT * FROM BBS";		
