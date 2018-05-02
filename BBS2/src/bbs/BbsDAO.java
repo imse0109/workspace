@@ -89,8 +89,8 @@ public class BbsDAO {
 		return -1;
 	}
 	
-	public List<Bbs> getLists() {
-		List<Bbs> bbsList = new ArrayList<Bbs>();
+	public ArrayList<Bbs> getLists() {
+		ArrayList<Bbs> bbsList = new ArrayList<Bbs>();
 		String SQL = "SELECT * FROM BBS";		
 		try {
 			pstmt = conn.prepareStatement(SQL);

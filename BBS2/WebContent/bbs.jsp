@@ -23,7 +23,7 @@
 		}
 		
 		BbsDAO BbsDAO = new BbsDAO();
-		List<Bbs> list = BbsDAO.getLists();
+		ArrayList<Bbs> list = BbsDAO.getLists();
 		request.setAttribute("bbsList", list);
 	%>
 	<header>
@@ -72,5 +72,14 @@
 			</div>
 		</div>
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		var bbsLength = $(".bbs tr").length;
+		console.log(bbsLength);
+		
+	});	
+	</script>
 </body>
 </html>
